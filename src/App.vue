@@ -4,7 +4,7 @@
   <div>
 
     <div id="app">
-    <b-navbar toggleable="lg" type="light" variant="light">
+    <b-navbar toggleable="lg" type="dark"  id="nav">
     <b-navbar-brand href="#"><img src='./assets/flyybylogo.png' alt ='brand' width = '100' height = '35'></b-navbar-brand>
     
      <b-collapse id="nav-collapse" is-nav>
@@ -19,25 +19,25 @@
         <b-col>
           <b-jumbotron container-fluid='true' id="bigBox" text-variant='white'>
             <template v-slot:header>
-              Flyyby. For the
+              Get
               <span class="typed-text">{{ typeValue }}</span>
-              <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>
+              <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>the food they need.
             </template>
 
             <template v-slot:lead>
-              Delivering to your local community... Quickly, Safely, Reliably.
+              No one should have to risk their health to put food on the table.
             </template>
             
             <hr class="my-4">
             <b-row>
             <b-col>
             <p>
-              We use the power of our patented drone technology to propose a whole new method of package delivery: through the air. 
+              FlyyBy partners with food banks near you to bring contagion-free meals to the most vulnerable people in your lives. Free of charge. 
 
             </p>
             <hr class="my-5">
-            <b-button variant="primary" href="#">Contact Us</b-button>
-            <b-button variant="success" href="#">Blog</b-button>   
+            <b-button variant="primary"  id='contact' href="#">Contact Us</b-button>
+            <b-button variant="success" id='blog' href="#">Blog</b-button>   
             </b-col>
             <b-col>
             <img src='./assets/flyybydrone.png' alt='our drone' width='400' height="250">
@@ -55,7 +55,7 @@
       </div>
     </div>
     <h1>Contact Us</h1>
-    <p>Please email us at staff@flyyby.com</p>
+    <p>Please email us at  achubbic@ucsc.edu</p>
   </div>
   
 </template>
@@ -67,7 +67,7 @@ import { setTimeout } from 'timers';
       return {
         typeValue: '',
         typeStatus: false,
-        typeArray: ['sick','dying','pregnant','mentally ill'],
+        typeArray: ['seniors','patients','working families'],
         typingSpeed: 200,
         erasingSpeed: 100,
         newTextDelay: 2000,
@@ -129,6 +129,19 @@ background: linear-gradient(180deg, rgba(9,5,32,1) 38%, rgba(30,30,181,1) 90%);
   text-align: left;
 }
 
+#nav{
+  background-color:#32527b
+}
+
+#blog{
+  background-color:#c9ffdd;
+  color:black
+}
+
+#contact{
+  background-color:#dcfcfc;
+  color:black
+}
 
 #bigBox{
   background-color:#212121;
@@ -138,6 +151,7 @@ background: linear-gradient(180deg, rgba(9,5,32,1) 38%, rgba(30,30,181,1) 90%);
   top:100px;
 
 }
+
 
 #grad{
   background: rgb(0,212,255);
@@ -161,7 +175,7 @@ h1 {
       color: #D2B94B;
     }
     span.cursor {
-      display: inline-block;
+      display: inline-block;  
       margin-left: 3px;
       width: 4px;
       background-color: #fff;
