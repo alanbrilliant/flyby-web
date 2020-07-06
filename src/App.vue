@@ -1,82 +1,142 @@
+
+
 <template>
-  <div id="app">
-    <div id="grad">
-      <h1>Flyby</h1>
-      <h2>Welcome</h2>
-      <img src="./assets/flyby-drone.jpg" width="700px" height="400px">
-      <h3>Something something drones something something immune system </h3>
-    </div>
-    <div >
-      <h2 id="grad">
-        Our values
-      </h2>
-      <div id="ol">
-      <ol>
-        <li>Do not give opinions or advice unless you are asked.</li>
-        <li>Do not tell your troubles to others unless you are sure they want to hear them.</li>
-        <li>When in another's home, show them respect or else do not go there.</li>
-        <li>If a guest in your home annoys you, treat him cruelly and without mercy.</li>
-        <li>Do not make sexual advances unless you are given the mating signal.</li>
-        <li>Do not take that which does not belong to you unless it is a burden to the other person and they cry out to be relieved.</li>
-        <li>Acknowledge the power of magic if you have employed it successfully to obtain your desires. If you deny the power of magic after having called upon it with success, you will lose all you have obtained.</li>
-        <li>Do not complain about anything to which you need not subject yourself.</li>
-        <li>Do not harm little children.</li>
-        <li>Do not kill non-human animals unless you are attacked or for your food.</li>
-        <li>When walking in open territory, bother no one. If someone bothers you, ask him to stop. If he does not stop, destroy him.</li>
-      </ol>
+  <div>
+
+    <div id="app">
+    <b-navbar toggleable="lg" type="light" variant="light">
+    <b-navbar-brand href="#"><img src='./assets/flyybylogo.png' alt ='brand' width = '100' height = '35'></b-navbar-brand>
+    
+     <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item href="#">Blog</b-nav-item>
+        <b-nav-item href="#" disabled>Contact Us</b-nav-item>
+      </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+    <div class = 'container'>
+      <b-row>
+        <b-col>
+          <b-jumbotron container-fluid='true' id="bigBox" text-variant='white'>
+            <template v-slot:header>
+              Flyyby. For the
+              <span class="typed-text">{{ typeValue }}</span>
+              <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>
+            </template>
+
+            <template v-slot:lead>
+              Delivering to your local community... Quickly, Safely, Reliably.
+            </template>
+            
+            <hr class="my-4">
+            <b-row>
+            <b-col>
+            <p>
+              We use the power of our patented drone technology to propose a whole new method of package delivery: through the air. 
+
+            </p>
+            <hr class="my-5">
+            <b-button variant="primary" href="#">Contact Us</b-button>
+            <b-button variant="success" href="#">Blog</b-button>   
+            </b-col>
+            <b-col>
+            <img src='./assets/flyybydrone.png' alt='our drone' width='400' height="250">
+            </b-col>
+            </b-row>
+
+          
+        </b-jumbotron>
+
+      </b-col>
+      <!-- <b-col>
+        <p>Hello</p>
+      </b-col> -->
+      </b-row>
       </div>
     </div>
-    <div>
-      <h2 id="grad">Meet the Team</h2>
-      <div id="flex">
-        <div>
-          <h3>Ayden Chubbic, The Eastern Moon</h3>
-          <img src = "./assets/alan.png" width ="400px" height = "330px">
-        
-        </div>
-        <div>
-          <h3>Alan Brilliant, Herald of Awakening</h3>
-          <img src = "./assets/ayden.png" width ="410px" height = "330px">
-          
-        </div>
-
-        <div>
-          <h3>Arnold, Intern</h3>
-          <img src = "./assets/arnold.png" width ="450px" height = "330px">
-          
-        </div>
-      </div>
-      
-      
-
-    </div>
+    <h1>Contact Us</h1>
+    <p>Please email us at staff@flyyby.com</p>
   </div>
+  
 </template>
 
 <script>
-
-export default {
- 
-}
+import { setTimeout } from 'timers';
+  export default {
+    data: () => {
+      return {
+        typeValue: '',
+        typeStatus: false,
+        typeArray: ['sick','dying','pregnant','mentally ill'],
+        typingSpeed: 200,
+        erasingSpeed: 100,
+        newTextDelay: 2000,
+        typeArrayIndex: 0,
+        charIndex: 0
+      }
+    },
+    methods: {
+      typeText() {
+        if(this.charIndex < this.typeArray[this.typeArrayIndex].length) {
+          if(!this.typeStatus)
+            this.typeStatus = true;
+          this.typeValue += this.typeArray[this.typeArrayIndex].charAt(this.charIndex);
+          this.charIndex += 1;
+          setTimeout(this.typeText, this.typingSpeed);
+        }
+        else {
+          this.typeStatus = false;
+          setTimeout(this.eraseText, this.newTextDelay);
+        }
+      },
+      eraseText() {
+        if(this.charIndex > 0) {
+          if(!this.typeStatus)
+            this.typeStatus = true;
+          this.typeValue = this.typeArray[this.typeArrayIndex].substring(0, this.charIndex - 1);
+          this.charIndex -= 1;
+          setTimeout(this.eraseText, this.erasingSpeed);
+        }
+        else {
+          this.typeStatus = false;
+          this.typeArrayIndex += 1;
+          if(this.typeArrayIndex >= this.typeArray.length)
+            this.typeArrayIndex = 0;
+          setTimeout(this.typeText, this.typingSpeed + 1000);
+        }
+      }
+    },
+    created() {
+      setTimeout(this.typeText, this.newTextDelay + 200);
+    }
+  }
 </script>
 
 <style>
 
 #app {
-  text-shadow: white 0px 0px 10px;
-  
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height:900px;
+  background: rgb(9,5,32);
+background: linear-gradient(180deg, rgba(9,5,32,1) 38%, rgba(30,30,181,1) 90%);
+
 }
 #ol {
   text-align: left;
 }
-h3 {
-  margin: 40px 20px 20px;
+
+
+#bigBox{
+  background-color:#212121;
+  
+  color:white;
+  position: relative;
+  top:100px;
+
 }
 
 #grad{
@@ -86,11 +146,35 @@ h3 {
 
 #flex{
 
-  margin: 40px 40px 40px;
+  /* margin: 40px 40px 40px; */
   /* padding: 40px 40px 40px; */
   display: flex;
   flex-direction: row;
   justify-content: space-around
   
 }
+
+h1 {
+    font-size: 6rem;
+    font-weight: normal;
+    span.typed-text {
+      color: #D2B94B;
+    }
+    span.cursor {
+      display: inline-block;
+      margin-left: 3px;
+      width: 4px;
+      background-color: #fff;
+      animation: cursorBlink 1s infinite;
+    }
+    span.cursor.typing {
+      animation: none;
+    }
+}
+@keyframes cursorBlink {
+    49% { background-color: #fff; }
+    50% { background-color: transparent; }
+    99% { background-color: transparent; }
+}
+
 </style>
