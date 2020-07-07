@@ -18,20 +18,22 @@
       <b-row>
         <b-col>
           <b-jumbotron container-fluid='true' id="bigBox" text-variant='white'>
-            <template v-slot:header>
-              Get
+            <template v-slot:header style="font-size:5vw !important;">
+              <h1 style="font-size:3.7vw;"  >Get 
               <span class="typed-text">{{ typeValue }}</span>
-              <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>the food they need.
+              <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span> 
+              the food they need.
+              </h1>
             </template>
 
             <template v-slot:lead>
-              No one should have to risk their health to put food on the table.
+              <h2 style="font-size:1.7vw;">No one should have to risk their health to put food on the table.</h2>
             </template>
             
             <hr class="my-4">
             <b-row>
             <b-col>
-            <p>
+            <p style="font-size:1.1vw;">
               FlyyBy partners with food banks near you to bring contagion-free meals to the most vulnerable people in your lives. Free of charge. 
 
             </p>
@@ -54,7 +56,7 @@
       </b-row>
       </div>
     </div>
-    <h1>Contact Us</h1>
+    <h1 style='font-size:5vw;'>Contact Us</h1>
     <p>Please email us at  achubbic@ucsc.edu</p>
   </div>
   
@@ -138,6 +140,10 @@ background: linear-gradient(180deg, rgba(9,5,32,1) 38%, rgba(30,30,181,1) 90%);
   color:black
 }
 
+/* .jumbotron{
+  font-size:3vw;
+} */
+
 #contact{
   background-color:#dcfcfc;
   color:black
@@ -171,19 +177,22 @@ background: linear-gradient(180deg, rgba(9,5,32,1) 38%, rgba(30,30,181,1) 90%);
 h1 {
     font-size: 6rem;
     font-weight: normal;
-    span.typed-text {
-      color: #D2B94B;
-    }
-    span.cursor {
-      display: inline-block;  
-      margin-left: 3px;
-      width: 4px;
-      background-color: #fff;
-      animation: cursorBlink 1s infinite;
-    }
-    span.cursor.typing {
-      animation: none;
-    }
+   
+}
+
+span.typed-text {
+    color: #D2B94B;
+}
+span.cursor {
+  display: inline-block;  
+  margin-left: 3px;
+  width: 4px;
+  background-color: #fff;
+  animation: cursorBlink 1s infinite;
+}
+span.cursor.typing {
+  animation: none;
+  
 }
 @keyframes cursorBlink {
     49% { background-color: #fff; }
